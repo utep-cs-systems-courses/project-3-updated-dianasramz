@@ -15,7 +15,7 @@ project due date.
 ## Requirements
 Your game should meet the following minimum criteria:
 
-- dynamically render graphical elements that move
+- dynamically render graphical elements that move and change 
 -- including one original algorithmically rendered graphical element 
 - handle colisions properly with other shapes and area boundaries
 - produce sounds triggered by game events
