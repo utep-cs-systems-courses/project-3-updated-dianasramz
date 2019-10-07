@@ -26,4 +26,4 @@ lcddemo.elf: lcddemo.o libLcd.a
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 
 
 load: lcddemo.elf
-	mspdebug rf2500 "prog $^"
+	msp430loader.sh $^

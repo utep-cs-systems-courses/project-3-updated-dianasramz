@@ -16,5 +16,5 @@ clean:
 	rm -f *.a *.o *.elf
 
 load: p2sw-demo.elf
-	mspdebug rf2500 "prog $^"
+	msp430loader.sh $^
 
