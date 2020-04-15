@@ -154,9 +154,15 @@ int abRectOutlineCheck(const AbRect *rect, const Vec2 *centerPos, const Vec2 *pi
  * 
  *  Each layer contains
  *   - a referenced to an abstract shape to be rendered.
- *   - the layer's current position
+ *   - the layer's position
+ *     - posLast: the location where it was previously drawn
+ *     - pos: the location where it is presently being drawn
+ *     - posNext: the next position where it will be drawn
+       When a layer is created: pos should be initialized to the layer's 
+          initial position prior to calling layerInit
+       Whan a layer moves: only posNext should be changed.
  *   - the layer's color
- *   - a reference to the next (lower) layer.
+ *   - next: a reference to the next layer behind this layer
  */
 typedef struct Layer_s {
   AbShape *abShape;
