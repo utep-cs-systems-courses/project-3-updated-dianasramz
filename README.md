@@ -17,7 +17,7 @@ Your game should meet the following minimum criteria:
 
 Special for Spring 2020
 
-- Dynamically render graphical elements that move and change 
+- Dynamically render graphical elements that move and change, and multiple sounds
 -- including one original algorithmically rendered graphical element 
 - Some text must should be rendered from an ASCII string.
 -- using a font other than 5x7
