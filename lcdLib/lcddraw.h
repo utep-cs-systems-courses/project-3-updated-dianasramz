@@ -5,7 +5,7 @@
 #ifndef lcddraw_included
 #define lcddraw_included
 
-/** Draw single pixel at x,row 
+/** Draw single pixel at col, row 
  *
  *  \param col Column to draw to
  *  \param row Row to draw to
