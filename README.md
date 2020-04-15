@@ -1,8 +1,8 @@
-# Project 3: LCD Game
+# Project 3: Graphical LCD Toy 
 ## Introduction
 
 Continuing your effort to help ACME Solutions provide Christmas toys, 
-your task is now to develop a game for the LCD screen.  You should 
+your task is now to develop a toy with a graphical LCD screen.  You should 
 utilize the knowledge you havegained working with the buttons and 
 buzzer.  In addition, a series of libraries have been found to assist
 you in creating your game.
@@ -14,6 +14,20 @@ project due date.
 
 ## Requirements
 Your game should meet the following minimum criteria:
+
+Special for Spring 2020
+
+- Dynamically render graphical elements that move and change 
+-- including one original algorithmically rendered graphical element 
+- Some text must should be rendered from an ASCII string.
+-- using a font other than 5x7
+- Graphical rendering must be performed by an interruptable foreground task
+-- that sleeps when there is nothing to update
+- The program's behavior must change in response to button presses and the progress of time
+-- Sensitivity to time and buttons must be interrupt driven
+
+
+Usual requirements (Not for Spring 2020)
 
 - dynamically render graphical elements that move and change 
 -- including one original algorithmically rendered graphical element 
