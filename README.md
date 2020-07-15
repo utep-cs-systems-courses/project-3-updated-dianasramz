@@ -15,7 +15,7 @@ project due date.
 ## Requirements
 Your game should meet the following minimum criteria:
 
-Special for Spring 2020
+Special for Summer 2020
 
 - Dynamically render graphical elements that dynamically change, and multiple sounds
 -- including one original algorithmically rendered graphical element 
