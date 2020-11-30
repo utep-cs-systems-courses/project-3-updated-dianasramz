@@ -2,6 +2,8 @@
 #include "stateMachines.h"
 #include "led.h"
 #include "buzzer.h"
+#include "lcdutils.h"
+#include "lcddraw.h"
 
 static int count = 0;
 static char dim = 0;
@@ -105,10 +107,10 @@ void shape_sides()
 
   for(u_char r = 0; r < 11; r++){
     for(u_char c = 0; c < r; c++){
-      drawPixel(c+offC, r+offR, COLOR_BLACK)
+      drawPixel(c+offC, r+offR, COLOR_BLACK);
     }
   }
-  drawString5x7(30, 30, "Triangles have 3 sides"; fontFgColor, COLOR_BLACK);
+  drawString5x7(30, 30, "Triangles have 3 sides", COLOR_RED, COLOR_BLACK);
 }
 
   /*

@@ -2,15 +2,16 @@
 #include "libTimer.h"
 #include "led.h"
 #include "buzzer.h"
-#include "switches.h"
 #include "lcdutils.h"
 #include "lcddraw.h"
 #include "lcdtypes.h"
 #include "p2switches.h"
 #include "stateMachines.h"
+#include "dim_red_state.h"
 
 #define LED_GREEN BIT6
 short redrawScreen = 1;
+char bState;
 
 void wdt_c_handler()
 {
@@ -19,7 +20,6 @@ void wdt_c_handler()
   count++;
   if( count == 250){
     count = 0;
-    state_advance();
     redrawScreen = 1;
   }
 }
@@ -28,7 +28,7 @@ int main(void){
   P1DIR |= LED_GREEN;
   P1OUT |= LED_GREEN;
   configureClocks(); //setup master oscillator, CPU & peripherial
-  p2sw_init();
+  p2sw_init(15);
   buzzer_init();
   led_init();
   enableWDTInterrupts(); //enable periodic interrupts
@@ -55,6 +55,7 @@ int main(void){
 	break;
       }
     }
+  }
 
   P1OUT &= ~LED_GREEN;   /*green off*/
   or_sr(0x10);           /*CPU off*/
