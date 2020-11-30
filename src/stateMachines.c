@@ -4,6 +4,7 @@
 #include "buzzer.h"
 
 static int count = 0;
+static char dim = 0;
 
 void turn_on_red()		/*turn on red, turn off green */
 {
@@ -30,8 +31,9 @@ void off_state() /*state to turn off the toy*/
 {
   buzzer_set_period(0);
   red_on = 0;
-  green_on = 0;
+  
   led_update();
+  clearScreen(COLOR_WHITE);
 }
 
 void toggle_leds() /*toggle between red and green*/
@@ -77,30 +79,25 @@ void siren_on()
   count +=2;
 }
 
-void dim_green()
+void dim_red()
 {
-  if (count == 5000){
-    count = 0;
+  switch(dim){
+  case 0:
+    red_on = 1;
+    dim++;
+    break;
+  case 1:
+  case 2:
+  case 3:
+    red_on = 0;
+    dim = 0;
+    break;
   }
-  if (count < 1000) {
-    green_on = 1;
-  }
-  else if (count < 2000 && count%2 == 0){
-    green_on = 1;
-  }
-  else if (count < 3000 && count%3 == 0){
-    green_on = 1;
-  }
-  else if (count < 4000 && count%4 == 0){
-    green_on = 1;
-  }
-  else if (count < 5000 && count%5 == 0){
-    green_on = 1;
-  }
-  else green_on = 0;
-
-  count += 1;
+  led_changed = 1;
+  led_update();
+    
 }
+
   /*
 void state_advance()		/* alternate between toggling red & green 
 {

@@ -38,6 +38,16 @@ void main()
       redrawScreen = 0;
       drawString5x7(20,20, "hello", fontFgColor, COLOR_BLUE);
     }
+    /*
+    if (redrawScreen) {
+      for(u_char r = 0; r < 11; r++){
+	for (u_char c = 0; c< r; c++){
+	  drawPixel(c, r, COLOR_BLACK);
+	}
+      }
+      // redrawScreen = 0;
+    }
+    */			    
     P1OUT &= ~LED_GREEN;	/* green off */
     or_sr(0x10);		/**< CPU OFF */
     P1OUT |= LED_GREEN;		/* green on */

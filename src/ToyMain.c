@@ -19,6 +19,7 @@ void wdt_c_handler()
   count++;
   if( count == 250){
     count = 0;
+    state_advance();
     redrawScreen = 1;
   }
 }
@@ -35,5 +36,28 @@ int main(void){
 
   or_sr(0x8); //CPU off, GIE on
 
-  clearScreen(COLOR_WHITE); 
+  clearScreen(COLOR_WHITE);
+  while(1){
+    if(redrawScreen){
+      redrawScreen = 0;
+      switch(bState){
+      case 1:
+	dim_red_state();
+	break;
+      case 2:
+	shape_sides();
+	break;
+      case 3:
+	siren_on();
+	break;
+      case 4:
+	off_state();
+	break;
+      }
+    }
+
+  P1OUT &= ~LED_GREEN;   /*green off*/
+  or_sr(0x10);           /*CPU off*/
+  P1OUT |= LED_GREEN;    /*green on*/
+
 }
