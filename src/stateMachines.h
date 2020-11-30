@@ -7,6 +7,7 @@ void both_on();
 void off_state();
 void toggle_leds();
 void siren_on();
-void dim_green();
+void dim_red();
+void shape_sides();
 
 #endif // included

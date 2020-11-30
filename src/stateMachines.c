@@ -98,6 +98,19 @@ void dim_red()
     
 }
 
+void shape_sides()
+{
+  char offR = 10;
+  char offC = 8;
+
+  for(u_char r = 0; r < 11; r++){
+    for(u_char c = 0; c < r; c++){
+      drawPixel(c+offC, r+offR, COLOR_BLACK)
+    }
+  }
+  drawString5x7(30, 30, "Triangles have 3 sides"; fontFgColor, COLOR_BLACK);
+}
+
   /*
 void state_advance()		/* alternate between toggling red & green 
 {
