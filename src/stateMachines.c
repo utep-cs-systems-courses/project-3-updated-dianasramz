@@ -80,7 +80,7 @@ void siren_on()
   else if (count < 2450) buzzer_set_period(1000);
   count +=2;
 }
-
+/*
 void dim_red()
 {
   switch(dim){
@@ -95,11 +95,11 @@ void dim_red()
     dim = 0;
     break;
   }
-  led_changed = 1;
+  //led_changed = 1;
   led_update();
     
 }
-
+*/
 void shape_sides()
 {
   char offR = 10;
