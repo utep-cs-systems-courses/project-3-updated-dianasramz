@@ -37,7 +37,7 @@ case2:
 	mov.b #3, &dim		;dim set to 0 to repeat
 	jmp out
 case3:
-	mov #1, &red_on
+	mov #0, &red_on
 	mov.b #0, &dim
 	jmp out
 out:

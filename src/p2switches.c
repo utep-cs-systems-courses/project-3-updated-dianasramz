@@ -51,7 +51,7 @@ __interrupt_vec(PORT2_VECTOR) Port_2(){
 void switch_interrupt_handler()
 {
   char p2val = p2sw_read();
-  switch_update_interrupt_sense();
+  //switch_update_interrupt_sense();
   sw1_state = (p2val & 0x1) ? 0 : 1; /*0 when switch S1 is up*/
   sw2_state = (p2val & 0x2) ? 0 : 1; /*0 when switch S2 is up*/
   sw3_state = (p2val & 0x4) ? 0 : 1; /*0 when switch S3 is up*/
