@@ -35,7 +35,7 @@ void off_state() /*state to turn off the toy*/
   red_on = 0;
   
   led_update();
-  clearScreen(COLOR_WHITE);
+  clearScreen(COLOR_BLACK);
 }
 
 void toggle_leds() /*toggle between red and green*/
@@ -60,7 +60,7 @@ void toggle_leds() /*toggle between red and green*/
 
 void siren_on()
 {
- 
+  clearScreen(COLOR_GREEN);
   if(count == 2500){
     buzzer_set_period(0);
     count = 0;
@@ -102,15 +102,20 @@ void dim_red()
 */
 void shape_sides()
 {
-  char offR = 10;
-  char offC = 8;
-
-  for(u_char r = 0; r < 11; r++){
+  u_char size = 15;
+  u_char w = screenWidth/4;
+  u_char h = screenHeight/4;
+  clearScreen(COLOR_PINK);
+  
+  for(u_char r = 0; r < size; r++){
     for(u_char c = 0; c < r; c++){
-      drawPixel(c+offC, r+offR, COLOR_BLACK);
+      drawPixel(w-c, h-r-1, COLOR_BLACK);
+      drawPixel(w-c, h+r-(2*size), COLOR_BLACK);
+      drawPixel(w+c, h-r-1, COLOR_BLACK);
+      drawPixel(w+c, h+r-(2*size), COLOR_BLACK);
     }
   }
-  drawString5x7(30, 30, "Triangles have 3 sides", COLOR_RED, COLOR_BLACK);
+  drawString5x7(screenWidth/2, screenHeight/2, "4 sides", COLOR_RED, COLOR_BLACK);
 }
 
   /*

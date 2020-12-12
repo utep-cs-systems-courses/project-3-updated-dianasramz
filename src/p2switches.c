@@ -26,6 +26,7 @@ p2sw_init(unsigned char mask)
   P2DIR &= ~mask;   /* set switches' bits for input */
 
   switch_update_interrupt_sense();
+  switch_interrupt_handler();
 }
 
 /* Returns a word where:
@@ -45,6 +46,7 @@ __interrupt_vec(PORT2_VECTOR) Port_2(){
   if (P2IFG & switch_mask) {  /* did a button cause this interrupt? */
     P2IFG &= ~switch_mask;	/* clear pending sw interrupts */
     switch_update_interrupt_sense();
+    switch_interrupt_handler();
   }
 }
 
