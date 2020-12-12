@@ -56,10 +56,10 @@ int main(void){
 	break;
       }
     }
+  
+
+    P1OUT &= ~LED_GREEN;   /*green off*/
+    or_sr(0x10);           /*CPU off*/
+    P1OUT |= LED_GREEN;    /*green on*/
   }
-
-  P1OUT &= ~LED_GREEN;   /*green off*/
-  or_sr(0x10);           /*CPU off*/
-  P1OUT |= LED_GREEN;    /*green on*/
-
 }

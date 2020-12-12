@@ -6,7 +6,7 @@
 #include "lcddraw.h"
 
 static int count = 0;
-static char dim = 0;
+char dim = 0;
 
 void turn_on_red()		/*turn on red, turn off green */
 {

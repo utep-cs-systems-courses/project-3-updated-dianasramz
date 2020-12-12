@@ -2,7 +2,7 @@
 	.p2align 1,0
 	.text
 
-dim:
+dim:	
 	.byte 0			;dim = 0;
 
 	.extern red_on
