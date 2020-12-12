@@ -25,13 +25,14 @@ void wdt_c_handler()
 }
 
 int main(void){
+  led_init();
   P1DIR |= LED_GREEN;
   P1OUT |= LED_GREEN;
   
   configureClocks(); //setup master oscillator, CPU & peripherial
   p2sw_init(15);
   buzzer_init();
-  led_init();
+
   enableWDTInterrupts(); //enable periodic interrupts
   lcd_init();
 

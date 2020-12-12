@@ -3,7 +3,7 @@
 	.text
 
 dim:	
-	.byte 0			;dim = 0;
+	.byte 0		;dim = 0;
 
 	.extern red_on
 	.extern led_update
@@ -25,19 +25,19 @@ dim_red_state:
 	mov jt(r12), r0
 
 case0:
-	mov #1, &red_on		;turn on red
+	mov.b #1, &red_on		;turn on red
 	mov.b #1, &dim		;dim set to 1
 	jmp out
 case1:
-	mov #1, &red_on		;dim set to 2
+	mov.b #1, &red_on		;dim set to 2
 	mov.b #2, &dim
 	jmp out
 case2:
-	mov #1, &red_on
+	mov.b #1, &red_on
 	mov.b #3, &dim		;dim set to 0 to repeat
 	jmp out
 case3:
-	mov #0, &red_on
+	mov.b #0, &red_on
 	mov.b #0, &dim
 	jmp out
 out:
