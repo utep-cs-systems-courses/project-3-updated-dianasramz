@@ -6,7 +6,8 @@
 #include "lcddraw.h"
 
 static int count = 0;
-char dim = 0;
+static char dim = 0;
+static char led_state = 0;
 
 void turn_on_red()		/*turn on red, turn off green */
 {
@@ -80,9 +81,54 @@ void siren_on()
   else if (count < 2450) buzzer_set_period(1000);
   count +=2;
 }
-/*
-void dim_red()
+
+void dim_red25()
 {
+  switch(dim){
+  case 0:
+    red_on = 1;
+    dim++;
+    break;
+  case 1:
+    red_on = 0;
+    dim++;
+    break;
+  case 2:
+  case 3:
+    red_on = 0;
+    dim = 0;
+    break;
+  }
+  led_changed = 1;
+  led_update();
+}
+
+void dim_red50()
+{
+  switch(dim){
+  case 0:
+    red_on = 1;
+    dim++;
+    break;
+  case 1:
+    red_on = 1;
+    dim++;
+    break;
+  case 2:
+    red_on = 0;
+    dim++;
+    break;
+  case 3:
+    red_on = 0;
+    dim = 0;
+    break;
+  }
+  led_changed = 1;
+  led_update();
+}
+
+void dim_red75()
+{  
   switch(dim){
   case 0:
     red_on = 1;
@@ -95,11 +141,51 @@ void dim_red()
     dim = 0;
     break;
   }
-  //led_changed = 1;
-  led_update();
-    
+  led_changed = 1;
+  led_update();  
 }
-*/
+
+void led_advance()
+{
+  static char state = 0;
+  static char count = 0;
+
+  if(++count != 250){
+    switch(state){
+    case 0:
+      red_on = 1;
+      led_changed = 1;
+      led_update();
+      break;
+    case 1:
+      dim_red25();
+      break;
+    case 2:
+      red_on = 0;
+      led_changed = 1;
+      led_update();
+      break;
+    case 3:
+      dim_red50();
+      break;
+    case 4:
+      dim_red_state();
+      break;
+    }
+  }
+  else{
+       if(state ==4){
+	 state = 0;
+	 count = 0;
+       }
+       else{
+	 state++;
+       }
+  }
+}
+
+      
+
 void shape_sides()
 {
   u_char size = 15;
